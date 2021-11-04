@@ -1,0 +1,21 @@
+{
+  "name": "wetube",
+  "version": "1.0.0",
+  "description": "The best way to watch a video",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaylim92/wetube-reloaded.git"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Jay Lim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jaylim92/wetube-reloaded/issues"
+  },
+  "homepage": "https://github.com/jaylim92/wetube-reloaded#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
