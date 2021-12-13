@@ -24,6 +24,17 @@ app.use(
     store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
   })
 );
+app.use(
+  "/static",
+  express.static("assets"),
+  express.static("node_modules/@ffmpeg/core/dist")
+);
+
+app.use((req, res, next) => {
+  res.header("Cross-Origin-Embedder-Policy", "require-corp");
+  res.header("Cross-Origin-Opener-Policy", "same-origin");
+  next();
+});
 
 app.use(localsMiddleware);
 app.use("/uploads", express.static("uploads"));
