@@ -35,7 +35,7 @@ const addComment = (text, id) => {
 
 const handleSubmit = async (event) => {
   const textarea = form.querySelector("textarea");
-  if (text === "") {
+  if (textarea.value === "") {
     return;
   }
   event.preventDefault();
@@ -49,10 +49,10 @@ const handleSubmit = async (event) => {
     body: JSON.stringify({ text }),
   });
   if (response.status === 201) {
+    textarea.value = "";
     const { newCommentId } = await response.json();
     addComment(text, newCommentId);
   }
-  textarea.value = "";
 };
 
 if (form) {
