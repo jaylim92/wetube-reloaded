@@ -6,8 +6,8 @@ import MongoStore from "connect-mongo";
 import rootRouter from "./router/rootRouter";
 import videoRouter from "./router/videoRouter";
 import userRouter from "./router/userRouter";
+import apiRouter from "./router/apiRouter";
 import { localsMiddleware } from "./middlewares";
-import apirRouter from "./router/apiRouter";
 
 const app = express();
 const logger = morgan("dev");
@@ -16,6 +16,7 @@ app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
 app.use(logger);
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(
   session({
@@ -44,6 +45,6 @@ app.use("/static", express.static("assets"));
 app.use("/", rootRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);
-app.use("/api", apirRouter);
+app.use("/api", apiRouter);
 
 export default app;

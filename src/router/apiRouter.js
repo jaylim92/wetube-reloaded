@@ -1,8 +1,17 @@
 import express from "express";
-import { registerView } from "../controllers/videoController";
+import {
+  registerView,
+  createComment,
+  deleteComment,
+} from "../controllers/videoController";
 
-const apirRouter = express.Router();
+const apiRouter = express.Router();
 
-apirRouter.post("/videos/:id([0-9a-f]{24})/view", registerView);
+apiRouter.post("/videos/:id([0-9a-f]{24})/view", registerView);
+apiRouter.post("/videos/:id([0-9a-f]{24})/comment", createComment);
+apiRouter.delete(
+  "/:videoId([[0-9a-f]{24})/comment/:commentId([0-9a-f]{24})/delete",
+  deleteComment
+);
 
-export default apirRouter;
+export default apiRouter;
